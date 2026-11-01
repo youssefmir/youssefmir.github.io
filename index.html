@@ -349,9 +349,24 @@
   </footer>
 
   <script>
-    document.querySelectorAll("[data-print]").forEach(function (button) {
-      button.addEventListener("click", function () { window.print(); });
-    });
+    // « Version PDF » : charge d’abord les polices d’impression, puis ouvre l’impression.
+    (function () {
+      var faces = ['400 1em "Newsreader Print"', '500 1em "Newsreader Print"', 'italic 400 1em "Newsreader Print"'];
+      var fonts = document.fonts;
+      function ready() { return !fonts || faces.every(function (f) { return fonts.check(f); }); }
+      function load() { return fonts ? Promise.all(faces.map(function (f) { return fonts.load(f); })) : Promise.resolve(); }
+
+      window.addEventListener("beforeprint", function () { if (!ready()) load(); });
+
+      document.querySelectorAll("[data-print]").forEach(function (button) {
+        button.addEventListener("click", function () {
+          if (ready()) { window.print(); return; }
+          Promise.race([load(), new Promise(function (done) { setTimeout(done, 1500); })])
+            .catch(function () {})
+            .then(function () { window.print(); });
+        });
+      });
+    })();
   </script>
 </body>
 </html>

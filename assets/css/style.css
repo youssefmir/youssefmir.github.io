@@ -27,18 +27,38 @@
   font-display: swap;
 }
 
+/* Version impression : instances statiques de Newsreader, sans chevauchement
+   de contours. Dans les PDF, Chrome convertit les polices variables en Type 3
+   et creuse des trous là où les contours se recouvrent (le crochet du f).
+   Ces fichiers ne sont téléchargés qu’au moment d’imprimer. */
 @font-face {
-  font-family: "IBM Plex Mono";
-  src: url("../fonts/ibm-plex-mono-latin-400-normal.woff2") format("woff2");
+  font-family: "Newsreader Print";
+  src: url("../fonts/newsreader-print-400.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "Newsreader Print";
+  src: url("../fonts/newsreader-print-500.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "Newsreader Print";
+  src: url("../fonts/newsreader-print-400-italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: block;
 }
 
 @font-face {
   font-family: "IBM Plex Mono";
-  src: url("../fonts/ibm-plex-mono-latin-500-normal.woff2") format("woff2");
-  font-weight: 500;
+  src: url("../fonts/ibm-plex-mono-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
@@ -892,6 +912,7 @@ html:not(.js) .js-only {
     --ink-3: #555;
     --rule: #c9c9c9;
     --accent: #000;
+    --serif: "Newsreader Print", "Newsreader", Georgia, serif;
   }
 
   html {
@@ -956,6 +977,7 @@ html:not(.js) .js-only {
   .cover-name {
     margin: 0 0 3mm;
     font-size: 30pt;
+    font-weight: 400;
   }
 
   .lead {
