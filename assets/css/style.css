@@ -1,0 +1,1049 @@
+/* ==========================================================================
+   Youssef Mir · feuille de style
+   1. Polices        5. Couverture      9. Compétences      13. Impression
+   2. Variables      6. Sections       10. Publications
+   3. Base           7. Parcours       11. Contact
+   4. Mise en page   8. Projets        12. Pied de page
+   ========================================================================== */
+
+
+/* 1. Polices ----------------------------------------------------------------
+   Auto-hébergées (aucun appel à Google Fonts). Licence SIL OFL, voir
+   assets/fonts/. Newsreader est variable : graisse et taille optique. */
+
+@font-face {
+  font-family: "Newsreader";
+  src: url("../fonts/newsreader-latin-opsz-normal.woff2") format("woff2");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Newsreader";
+  src: url("../fonts/newsreader-latin-wght-italic.woff2") format("woff2");
+  font-weight: 200 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("../fonts/ibm-plex-mono-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("../fonts/ibm-plex-mono-latin-500-normal.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+/* 2. Variables --------------------------------------------------------------
+   Papier, encre et une seule couleur d’accent (vermillon, façon crayon de
+   relecture). Toutes les couleurs de texte respectent un contraste ≥ 4,5:1. */
+
+:root {
+  color-scheme: light dark;
+
+  --paper:   #f4f1ea;
+  --paper-2: #ebe6da;
+  --ink:     #1a1916;
+  --ink-2:   #4f4b44;
+  --ink-3:   #69645a;
+  --rule:    #d6cfc0;
+  --accent:  #b03c13;
+
+  --serif: "Newsreader", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --mono:  "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --max:     76rem;
+  --gutter:  clamp(1.25rem, 4.5vw, 3.5rem);
+  --label:   12.5rem;
+  --gap:     clamp(2rem, 5vw, 5rem);
+  --measure: 37rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper:   #161513;
+    --paper-2: #1f1d1a;
+    --ink:     #ece7dc;
+    --ink-2:   #b5aea0;
+    --ink-3:   #9a9385;
+    --rule:    #35322d;
+    --accent:  #ef8a5b;
+  }
+}
+
+
+/* 3. Base ------------------------------------------------------------------ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  line-height: 1.55;
+  font-kerning: normal;
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-weight: 450;
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+p {
+  margin: 0;
+}
+
+p,
+li,
+dd,
+td {
+  text-wrap: pretty;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+dl,
+dd {
+  margin: 0;
+}
+
+code,
+pre {
+  font-family: var(--mono);
+}
+
+abbr[title] {
+  text-decoration: none;
+}
+
+a {
+  color: inherit;
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+  text-decoration-color: var(--ink-3);
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+a:hover {
+  color: var(--accent);
+  text-decoration-color: currentColor;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--paper);
+}
+
+/* Flèche des liens externes, dessinée en SVG pour rester nette partout */
+.ext::after {
+  content: "";
+  display: inline-block;
+  width: 0.5em;
+  height: 0.5em;
+  margin-left: 0.32em;
+  background-color: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M1.5 8.5 8.5 1.5M3 1.5h5.5V7' fill='none' stroke='%23000' stroke-width='1.25'/%3E%3C/svg%3E") center / contain no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M1.5 8.5 8.5 1.5M3 1.5h5.5V7' fill='none' stroke='%23000' stroke-width='1.25'/%3E%3C/svg%3E") center / contain no-repeat;
+  opacity: 0.7;
+}
+
+.skip {
+  position: absolute;
+  top: -4rem;
+  left: var(--gutter);
+  z-index: 10;
+  padding: 0.5rem 0.75rem;
+  background: var(--ink);
+  color: var(--paper);
+  font: 0.875rem/1.4 var(--mono);
+  text-decoration: none;
+}
+
+.skip:focus {
+  top: 1rem;
+}
+
+html:not(.js) .js-only {
+  display: none;
+}
+
+.linklike {
+  appearance: none;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+  text-decoration-color: var(--ink-3);
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+.linklike:hover {
+  color: var(--accent);
+  text-decoration-color: currentColor;
+}
+
+
+/* 4. Mise en page ------------------------------------------------------------
+   Une colonne d’étiquettes à gauche, le contenu à droite. */
+
+.wrap {
+  width: min(var(--max), 100% - 2 * var(--gutter));
+  margin-inline: auto;
+}
+
+@media (min-width: 60em) {
+  .cover,
+  .section {
+    display: grid;
+    grid-template-columns: var(--label) minmax(0, 1fr);
+    column-gap: var(--gap);
+  }
+}
+
+
+/* 5. Couverture -------------------------------------------------------------- */
+
+.cover {
+  padding-block: clamp(3rem, 11vh, 7.5rem) clamp(3rem, 7vw, 5.5rem);
+}
+
+.cover-name {
+  grid-column: 1 / -1;
+  margin: 0 0 clamp(1.75rem, 4.5vw, 3.75rem) -0.04em; /* compensation optique du Y */
+  font-size: clamp(3.25rem, 1.4rem + 9.2vw, 9rem);
+  font-weight: 430;
+  line-height: 0.9;
+  letter-spacing: -0.028em;
+}
+
+/* Le point final, seule touche de couleur de la couverture (comme le favicon) */
+.cover-name .stop {
+  color: var(--accent);
+}
+
+.toc {
+  margin-bottom: 2.5rem;
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
+.toc-title {
+  display: none;
+  margin-bottom: 0.85rem;
+  color: var(--ink-3);
+}
+
+.toc ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.25rem;
+}
+
+.toc a {
+  color: var(--ink-2);
+  text-decoration: none;
+}
+
+.toc a:hover {
+  color: var(--accent);
+}
+
+.lead {
+  max-width: 24em;
+  font-size: clamp(1.375rem, 1.05rem + 1.25vw, 2rem);
+  line-height: 1.27;
+  letter-spacing: -0.012em;
+}
+
+.intro {
+  max-width: var(--measure);
+  margin-top: 1.4rem;
+  color: var(--ink-2);
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.25rem 2rem;
+  max-width: 54rem;
+  margin-top: 2.75rem;
+  padding-block: 1.25rem;
+  border-block: 1px solid var(--rule);
+}
+
+.facts dt {
+  margin-bottom: 0.4rem;
+  color: var(--ink-3);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
+.facts dd {
+  font-size: 1.0625rem;
+  line-height: 1.35;
+}
+
+.cover-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.75rem;
+  margin-top: 1.75rem;
+  font-family: var(--mono);
+  font-size: 0.875rem;
+}
+
+@media (min-width: 60em) {
+  .toc {
+    grid-column: 1;
+    margin: 0.6rem 0 0;
+  }
+
+  .toc-title {
+    display: block;
+  }
+
+  .toc ul {
+    display: grid;
+    gap: 0.45rem;
+  }
+
+  .cover-body {
+    grid-column: 2;
+  }
+}
+
+@media (min-width: 40em) and (max-width: 59.99em) {
+  .facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 39.99em) {
+  .facts {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+    padding-block: 0;
+  }
+
+  .facts > div {
+    display: grid;
+    grid-template-columns: 8.75rem minmax(0, 1fr);
+    gap: 1rem;
+    padding-block: 0.8rem;
+  }
+
+  .facts > div + div {
+    border-top: 1px solid var(--rule);
+  }
+
+  .facts dt {
+    margin: 0.2rem 0 0;
+  }
+}
+
+
+/* 6. Sections ---------------------------------------------------------------- */
+
+.section {
+  padding-block: clamp(3.5rem, 8vw, 6.5rem);
+  border-top: 1px solid var(--rule);
+}
+
+.section-head {
+  margin-bottom: 2.25rem;
+}
+
+.section-head h2 {
+  font-size: clamp(1.625rem, 1.3rem + 1vw, 2rem);
+  letter-spacing: -0.012em;
+}
+
+.section-note {
+  max-width: 22rem;
+  margin-top: 0.75rem;
+  color: var(--ink-3);
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  line-height: 1.55;
+}
+
+@media (min-width: 60em) {
+  .section-head {
+    position: sticky;
+    top: 2rem;
+    align-self: start;
+    margin-bottom: 0;
+  }
+}
+
+/* Étiquettes mono partagées (outils, méta, dates) */
+.tools,
+.project-meta,
+.entry-date,
+.entry-org,
+.project-links,
+.archive-title {
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  line-height: 1.6;
+}
+
+
+/* 7. Parcours ---------------------------------------------------------------- */
+
+.entry + .entry {
+  margin-top: 2.75rem;
+  padding-top: 2.75rem;
+  border-top: 1px solid var(--rule);
+}
+
+.entry-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 1.5rem;
+  align-items: baseline;
+}
+
+.entry-title {
+  font-size: clamp(1.375rem, 1.2rem + 0.55vw, 1.625rem);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.entry-date {
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+
+.entry-date.is-current {
+  color: var(--accent);
+}
+
+.entry-org {
+  grid-column: 1 / -1;
+  margin-top: 0.35rem;
+  color: var(--ink-2);
+}
+
+.entry-lead {
+  max-width: var(--measure);
+  margin-top: 1.15rem;
+}
+
+.points {
+  max-width: var(--measure);
+  margin-top: 1rem;
+  font-size: 0.9375em;
+}
+
+.points li {
+  position: relative;
+  padding-left: 1.3em;
+}
+
+.points li + li {
+  margin-top: 0.4rem;
+}
+
+.points li::before {
+  content: "–";
+  position: absolute;
+  left: 0;
+  color: var(--ink-3);
+}
+
+.tools {
+  margin-top: 1.25rem;
+  color: var(--ink-2);
+}
+
+.tools .k {
+  margin-right: 0.75em;
+  color: var(--ink-3);
+}
+
+@media (max-width: 39.99em) {
+  .entry-head {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .entry-date {
+    grid-row: 1;
+    margin-bottom: 0.45rem;
+  }
+}
+
+
+/* 8. Projets ----------------------------------------------------------------- */
+
+.project-meta {
+  margin-bottom: 0.6rem;
+  color: var(--ink-3);
+}
+
+.project-title {
+  font-size: clamp(1.375rem, 1.2rem + 0.55vw, 1.625rem);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.project-title a {
+  text-decoration: none;
+}
+
+.project-title a:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+}
+
+.project > p:not(.project-meta):not(.tools):not(.project-links) {
+  max-width: var(--measure);
+  margin-top: 1rem;
+}
+
+.project-featured {
+  margin-bottom: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.project-featured .project-title {
+  font-size: clamp(2.25rem, 1.6rem + 2.4vw, 3.5rem);
+  font-weight: 440;
+  line-height: 1;
+  letter-spacing: -0.025em;
+}
+
+.project-featured > .project-tagline {
+  margin-top: 0.6rem;
+  color: var(--ink-2);
+  font-size: 1.2em;
+  font-style: italic;
+  line-height: 1.35;
+}
+
+.code {
+  max-width: var(--measure);
+  margin: 1.6rem 0 0;
+  padding: 1.1rem 1.25rem;
+  overflow-x: auto;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  background: var(--paper-2);
+  color: var(--ink);
+  font-size: 0.8125rem;
+  line-height: 1.75;
+}
+
+.code code {
+  font-size: inherit;
+}
+
+.code .c {
+  color: var(--ink-3);
+}
+
+.code .p {
+  color: var(--accent);
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+@media (max-width: 39.99em) {
+  .code {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+}
+
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin-top: 1.25rem;
+}
+
+.projects > li + li {
+  margin-top: 2.5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--rule);
+}
+
+.archive {
+  margin-top: 4.5rem;
+}
+
+.archive-title {
+  margin-bottom: 1rem;
+  color: var(--ink-3);
+  font-weight: 400;
+}
+
+.archive-list {
+  border-top: 1px solid var(--ink);
+}
+
+.archive-list li {
+  display: grid;
+  grid-template-columns: minmax(0, 18rem) minmax(0, 1fr);
+  gap: 0.3rem 2rem;
+  align-items: baseline;
+  padding-block: 1rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.archive-list a {
+  font-size: 1.0625rem;
+  line-height: 1.35;
+}
+
+.archive-list p {
+  color: var(--ink-2);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 39.99em) {
+  .archive-list li {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+
+/* 9. Compétences ------------------------------------------------------------
+   Un tableau à la façon d’un dictionnaire de données : filets fins,
+   noms de champs en mono. */
+
+.dict {
+  width: 100%;
+  border-collapse: collapse;
+  border-block: 1px solid var(--ink);
+}
+
+.dict thead th {
+  padding: 0.75rem 1.5rem 0.75rem 0;
+  border-bottom: 1px solid var(--rule);
+  color: var(--ink-3);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-weight: 400;
+  text-align: left;
+}
+
+.dict tbody th,
+.dict td {
+  padding: 1rem 1.5rem 1rem 0;
+  border-bottom: 1px solid var(--rule);
+  text-align: left;
+  vertical-align: baseline;
+}
+
+.dict tbody tr:last-child > * {
+  border-bottom: 0;
+}
+
+.dict tbody th {
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.dict tbody th code {
+  font-size: 0.8125rem;
+}
+
+.dict td:nth-child(2) {
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+.dict td:last-child {
+  width: 13.5rem;
+  padding-right: 0;
+  color: var(--ink-2);
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  line-height: 1.75;
+}
+
+@media (max-width: 39.99em) {
+  .dict thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .dict,
+  .dict tbody,
+  .dict tr,
+  .dict tbody th,
+  .dict td {
+    display: block;
+  }
+
+  .dict tr {
+    padding-block: 1rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .dict tbody tr:last-child {
+    border-bottom: 0;
+  }
+
+  .dict tbody th,
+  .dict td {
+    padding: 0;
+    border: 0;
+  }
+
+  .dict td:nth-child(2) {
+    margin-top: 0.3rem;
+  }
+
+  .dict td:last-child {
+    width: auto;
+    margin-top: 0.3rem;
+  }
+}
+
+
+/* 10. Publications ----------------------------------------------------------- */
+
+.log {
+  border-top: 1px solid var(--ink);
+}
+
+.log li {
+  border-bottom: 1px solid var(--rule);
+}
+
+.log a {
+  display: grid;
+  grid-template-columns: 7.5rem minmax(0, 1fr);
+  gap: 0.25rem 1.5rem;
+  align-items: baseline;
+  padding-block: 1rem;
+  text-decoration: none;
+}
+
+.log time {
+  color: var(--ink-3);
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+}
+
+.log a:hover time {
+  color: inherit;
+}
+
+.log-title {
+  font-size: 1.125rem;
+  line-height: 1.4;
+}
+
+@media (max-width: 39.99em) {
+  .log a {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+
+/* 11. Contact ---------------------------------------------------------------- */
+
+.contact-lead {
+  max-width: 24em;
+  font-size: clamp(1.375rem, 1.05rem + 1.25vw, 2rem);
+  line-height: 1.27;
+  letter-spacing: -0.012em;
+}
+
+.contact-list {
+  max-width: 44rem;
+  margin-top: 2.5rem;
+  border-top: 1px solid var(--ink);
+}
+
+.contact-list li {
+  display: grid;
+  grid-template-columns: 7.5rem minmax(0, 1fr);
+  gap: 0.25rem 1.5rem;
+  align-items: baseline;
+  padding-block: 1rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.contact-list .k {
+  color: var(--ink-3);
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+}
+
+.contact-list a {
+  font-size: 1.25rem;
+}
+
+@media (max-width: 39.99em) {
+  .contact-list li {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+
+/* 12. Pied de page ----------------------------------------------------------- */
+
+.site-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  padding-block: 2rem 3rem;
+  border-top: 1px solid var(--rule);
+  color: var(--ink-3);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  line-height: 1.6;
+}
+
+.site-footer a {
+  color: var(--ink-2);
+}
+
+
+/* Mouvement réduit ---------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+  }
+}
+
+
+/* 13. Impression --------------------------------------------------------------
+   « Version PDF » : la page s’imprime comme un CV, sur fond blanc. */
+
+@media print {
+  @page {
+    size: A4;
+    margin: 14mm 15mm 15mm;
+  }
+
+  :root {
+    --paper: #fff;
+    --paper-2: #fff;
+    --ink: #000;
+    --ink-2: #333;
+    --ink-3: #555;
+    --rule: #c9c9c9;
+    --accent: #000;
+  }
+
+  html {
+    font-size: 9.5pt; /* toutes les tailles en rem suivent */
+    scroll-behavior: auto;
+  }
+
+  body {
+    font-size: 10pt;
+    line-height: 1.4;
+  }
+
+  .skip,
+  .toc,
+  .cover-links,
+  .code,
+  .project-links,
+  .archive,
+  #publications,
+  .site-footer {
+    display: none !important;
+  }
+
+  .dict thead th,
+  .dict tbody th,
+  .dict td {
+    padding-block: 1.6mm;
+  }
+
+  .dict td:last-child {
+    width: 44mm;
+  }
+
+  .points li + li {
+    margin-top: 0.5mm;
+  }
+
+  .entry-lead,
+  .points,
+  .tools,
+  .project > p:not(.project-meta):not(.tools):not(.project-links) {
+    margin-top: 2mm;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .ext::after {
+    display: none;
+  }
+
+  .wrap {
+    width: auto;
+  }
+
+  .cover {
+    display: block;
+    padding: 0 0 5mm;
+  }
+
+  .cover-name {
+    margin: 0 0 3mm;
+    font-size: 30pt;
+  }
+
+  .lead {
+    max-width: none;
+    font-size: 13pt;
+  }
+
+  .intro {
+    max-width: none;
+    margin-top: 2mm;
+  }
+
+  .facts {
+    max-width: none;
+    margin-top: 4mm;
+    padding-block: 2.5mm;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .section {
+    display: grid;
+    grid-template-columns: 28mm minmax(0, 1fr);
+    column-gap: 7mm;
+    padding-block: 5mm;
+  }
+
+  .section-head {
+    position: static;
+    margin: 0;
+  }
+
+  .section-head h2 {
+    font-size: 13pt;
+  }
+
+  .section-note {
+    display: none;
+  }
+
+  .entry-head,
+  .points li,
+  .project,
+  .dict tr,
+  .contact-list li {
+    break-inside: avoid;
+  }
+
+  .entry-head,
+  .section-head {
+    break-after: avoid;
+  }
+
+  .entry + .entry {
+    margin-top: 4mm;
+    padding-top: 4mm;
+  }
+
+  .entry-title,
+  .project-title,
+  .project-featured .project-title {
+    font-size: 12pt;
+  }
+
+  .project-featured {
+    margin-bottom: 4mm;
+    padding-bottom: 4mm;
+  }
+
+  .projects > li + li {
+    margin-top: 4mm;
+    padding-top: 4mm;
+  }
+
+  .archive {
+    margin-top: 5mm;
+  }
+
+  .points,
+  .project-featured > .project-tagline {
+    font-size: inherit;
+  }
+
+  .contact-lead {
+    max-width: none;
+    font-size: 11pt;
+  }
+
+  .contact-list {
+    margin-top: 3mm;
+  }
+}
