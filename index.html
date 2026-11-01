@@ -45,7 +45,7 @@
     "alumniOf": { "@type": "CollegeOrUniversity", "name": "Université Paris-Saclay" },
     "address": { "@type": "PostalAddress", "addressLocality": "Orsay", "addressRegion": "Île-de-France", "addressCountry": "FR" },
     "knowsLanguage": ["fr", "en"],
-    "knowsAbout": ["Analyse métier", "Informatique décisionnelle", "Analyse de données", "SQL", "Python", "Dataiku", "Power BI", "LLM"],
+    "knowsAbout": ["Analyse métier", "Informatique décisionnelle", "Analyse de données", "Process mining", "SQL", "Python", "Dataiku", "Power BI", "LLM"],
     "sameAs": ["https://www.linkedin.com/in/youssefmir/", "https://github.com/youssefmir"]
   }
   </script>
@@ -164,7 +164,7 @@
     <section class="section wrap" id="projets" aria-labelledby="projets-titre">
       <div class="section-head">
         <h2 id="projets-titre">Projets</h2>
-        <p class="section-note">Open source, recherche, hackathon. Et quelques archives.</p>
+        <p class="section-note">Deux projets à la une, puis le reste.</p>
       </div>
 
       <div class="section-body">
@@ -186,7 +186,41 @@
           </p>
         </article>
 
+        <article class="project project-featured">
+          <p class="project-meta">Data et IA · 2026 · en cours</p>
+          <h3 class="project-title"><a href="https://github.com/youssefmir/credit-process-intelligence">Credit Process Intelligence</a></h3>
+          <p class="project-tagline">Une mission de conseil data et IA, menée sur un vrai processus de crédit.</p>
+          <p>Le terrain&nbsp;: le journal d’événements réel d’un établissement financier néerlandais (BPI&nbsp;Challenge&nbsp;2012), soit 13&nbsp;087 demandes de crédit à la consommation et 262&nbsp;200 événements. L’objectif&nbsp;: comprendre où le processus perd du temps et des clients, puis chiffrer ce que l’IA peut y changer.</p>
+          <p>Déjà en place&nbsp;: une acquisition des données traçable, des contrôles qualité documentés, la découverte du processus (carte, variantes, conformité), les KPI de délais et de goulots, le coût des allers-retours et l’analyse des abandons.</p>
+          <div class="pipeline">
+            <p class="pipeline-caption">Avancement&nbsp;: 6 étapes sur 8</p>
+            <ol>
+              <li class="is-done">données</li>
+              <li class="is-done">qualité</li>
+              <li class="is-done">processus</li>
+              <li class="is-done">KPI</li>
+              <li class="is-done">allers-retours</li>
+              <li class="is-done">abandons</li>
+              <li>prédiction<span class="visually-hidden"> (à venir)</span></li>
+              <li>business case<span class="visually-hidden"> (à venir)</span></li>
+            </ol>
+          </div>
+          <p class="tools"><span class="k">Stack</span>Python · pandas · pm4py · Parquet</p>
+          <p class="project-links">
+            <a class="ext" href="https://github.com/youssefmir/credit-process-intelligence">Dépôt GitHub</a>
+          </p>
+        </article>
+
         <ul class="projects">
+          <li class="project">
+            <p class="project-meta">Produit IA · 2026 · en construction</p>
+            <h3 class="project-title">AI Use Case Factory</h3>
+            <p>Une application pour cadrer, prioriser, chiffrer et sécuriser un portefeuille de cas d’usage IA&nbsp;: scoring, conformité à l’AI Act et au RGPD, business case, feuille de route. Le projet démarre&nbsp;: l’ossature technique est posée.</p>
+            <p class="tools"><span class="k">Stack</span>React · TypeScript · Vite</p>
+            <p class="project-links">
+              <a class="ext" href="https://github.com/youssefmir/ai-usecase-factory">Dépôt GitHub</a>
+            </p>
+          </li>
           <li class="project">
             <p class="project-meta">Recherche · mémoire de master</p>
             <h3 class="project-title">Machine learning et détection d’anomalies dans les flux de données</h3>
@@ -203,8 +237,12 @@
         </ul>
 
         <div class="archive">
-          <h3 class="archive-title">Avant le master&nbsp;: projets de licence, 2023</h3>
+          <h3 class="archive-title">Avant le master&nbsp;: projets de licence, 2022–2023</h3>
           <ul class="archive-list">
+            <li>
+              <a class="ext" href="https://github.com/youssefmir/Analysis-of-pollination-in-the-Pyrenees-main">Bourdons des Pyrénées, 1889–2005</a>
+              <p>En 115 ans, la vallée de Gavarnie s’est réchauffée de 2,3&nbsp;°C et les bourdons butinent 118&nbsp;m plus haut, près de quatre fois moins que la montée des isothermes. Notebook commenté et package Python testé.</p>
+            </li>
             <li>
               <a class="ext" href="https://github.com/youssefmir/Prediction-of-the-price-of-airline-tickets-for-an-Indian-company-">Prix des billets d’avion</a>
               <p>Régression linéaire, arbre de décision, puis forêt aléatoire optimisée&nbsp;: R² de 0,85 en validation croisée. Python, scikit-learn.</p>
@@ -212,10 +250,6 @@
             <li>
               <a class="ext" href="https://github.com/youssefmir/Precipitations-dans-le-Kerala">Précipitations au Kerala, 1901–2017</a>
               <p>Baisse des pluies confirmée par bootstrap et test de Mann-Kendall, poids de la mousson, carte des inondations de 2018. Projet à trois.</p>
-            </li>
-            <li>
-              <a class="ext" href="https://github.com/youssefmir/Analysis-of-pollination-in-the-Pyrenees-main">Bourdons des Pyrénées</a>
-              <p>Réchauffement d’environ 0,2&nbsp;°C par décennie et pollinisation par les bourdons sauvages, de 1889 à 2006.</p>
             </li>
           </ul>
         </div>
@@ -255,6 +289,11 @@
               <th scope="row" role="rowheader"><code>data</code></th>
               <td role="cell">Requêtes, préparation et contrôle des données pour les usages décisionnels.</td>
               <td role="cell">SQL, PostgreSQL, Python, Dataiku&nbsp;DSS</td>
+            </tr>
+            <tr role="row">
+              <th scope="row" role="rowheader"><code>process_mining</code></th>
+              <td role="cell">Reconstituer un processus à partir de ses journaux d’événements&nbsp;: variantes, conformité, goulots, délais.</td>
+              <td role="cell">pm4py, pandas</td>
             </tr>
             <tr role="row">
               <th scope="row" role="rowheader"><code>reporting</code></th>

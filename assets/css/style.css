@@ -589,6 +589,7 @@ html:not(.js) .js-only {
   font-size: 1.2em;
   font-style: italic;
   line-height: 1.35;
+  text-wrap: balance;
 }
 
 .code {
@@ -623,6 +624,65 @@ html:not(.js) .js-only {
     white-space: pre-wrap;
     overflow-wrap: anywhere;
   }
+}
+
+/* Avancement d’un projet : carré plein = étape faite, carré vide = à venir */
+.pipeline {
+  max-width: var(--measure);
+  margin-top: 1.6rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  background: var(--paper-2);
+}
+
+.pipeline-caption {
+  margin-bottom: 0.7rem;
+  color: var(--ink-3);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
+.pipeline ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 1.25rem;
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
+.pipeline li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  color: var(--ink-3);
+}
+
+.pipeline li::before {
+  content: "";
+  flex: none;
+  width: 0.6em;
+  height: 0.6em;
+  border: 1px solid currentColor;
+}
+
+.pipeline li.is-done {
+  color: var(--ink);
+}
+
+.pipeline li.is-done::before {
+  background: currentColor;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 .project-links {
@@ -929,8 +989,10 @@ html:not(.js) .js-only {
   .toc,
   .cover-links,
   .code,
+  .pipeline,
   .project-links,
   .archive,
+  .contact-lead,
   #publications,
   .site-footer {
     display: none !important;
@@ -939,7 +1001,7 @@ html:not(.js) .js-only {
   .dict thead th,
   .dict tbody th,
   .dict td {
-    padding-block: 1.6mm;
+    padding-block: 1.3mm;
   }
 
   .dict td:last-child {
@@ -1001,7 +1063,7 @@ html:not(.js) .js-only {
     display: grid;
     grid-template-columns: 28mm minmax(0, 1fr);
     column-gap: 7mm;
-    padding-block: 5mm;
+    padding-block: 4mm;
   }
 
   .section-head {
@@ -1066,6 +1128,6 @@ html:not(.js) .js-only {
   }
 
   .contact-list {
-    margin-top: 3mm;
+    margin-top: 0;
   }
 }
