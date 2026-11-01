@@ -5,11 +5,10 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
-  const isProduction = mode === "production";
   const port = Number(process.env.PORT) || 5173;
 
   return {
-    base: isProduction ? "/mon-site/" : "/",
+    base: "/",
     server: {
       host: "0.0.0.0",
       port,
