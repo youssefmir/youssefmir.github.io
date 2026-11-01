@@ -35,16 +35,15 @@ Tout se passe dans `index.html`. Chaque section est repérée par un commentaire
 
 Typographie française : `&nbsp;` avant les deux-points, `&#8239;` (espace fine) avant `?`, `!` et `;`.
 
-## Publier sur GitHub Pages
+## Publication
 
-1. Fusionner la branche du site dans `main`.
-2. Renommer le dépôt en `youssefmir.github.io` (Settings → General → Repository name). Le site sera alors à l’adresse https://youssefmir.github.io/.
-3. Dans Settings → Pages → Build and deployment, choisir **Deploy from a branch**, branche `main`, dossier `/ (root)`.
+Le site est publié sur https://youssefmir.github.io/.
 
-Si le dépôt garde un autre nom (par exemple `mon-site`), le site sera publié sur `https://youssefmir.github.io/mon-site/`. Il faut alors :
+Chaque push sur `main` le met en ligne automatiquement, en une minute environ, grâce au workflow `.github/workflows/deploy.yml`. Il n’y a pas de build : le workflow publie les fichiers du dépôt tels quels (sans `README.md` ni `.github/`). Le suivi des déploiements est dans l’onglet **Actions**.
 
-- remplacer `https://youssefmir.github.io/` par la nouvelle adresse dans `index.html` (balises `canonical`, `og:url`, `og:image` et bloc JSON-LD), `robots.txt` et `sitemap.xml` ;
-- dans `404.html`, préfixer les chemins absolus (`/assets/…`, `/favicon.svg`, `/`) par `/mon-site`.
+Réglage correspondant : Settings → Pages → Build and deployment → Source : **GitHub Actions**.
+
+L’adresse du site apparaît dans `index.html` (balises `canonical`, `og:url`, `og:image` et bloc JSON-LD), `robots.txt` et `sitemap.xml` : à mettre à jour en cas de nom de domaine personnalisé.
 
 ## Choix de conception
 
