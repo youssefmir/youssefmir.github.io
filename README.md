@@ -50,5 +50,5 @@ Si le dépôt garde un autre nom (par exemple `mon-site`), le site sera publié 
 
 - **Typographie** : Newsreader (texte et titres, avec taille optique) et IBM Plex Mono (dates, étiquettes, outils). Les polices sont servies depuis le site lui-même : aucun appel à Google Fonts.
 - **Couleurs** : papier, encre et une seule couleur d’accent, le vermillon. Le mode sombre suit le réglage du système. Les textes respectent un contraste d’au moins 4,5:1.
-- **Impression** : le bouton « Version PDF » ouvre l’impression du navigateur ; la page est mise en forme comme un CV sur fond blanc.
+- **Impression** : le bouton « Version PDF » ouvre l’impression du navigateur ; la page est mise en forme comme un CV sur fond blanc. Elle utilise des versions statiques de Newsreader (`newsreader-print-*.woff2`), chargées seulement à ce moment-là : dans les PDF, Chrome déforme certaines lettres des polices variables, comme le crochet du « f ».
 - **Sobriété** : pas de traceur, pas de cookie, pas de dépendance JavaScript (quelques lignes seulement, pour le bouton d’impression).
