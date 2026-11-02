@@ -63,7 +63,6 @@
       <ul>
         <li><a href="#parcours">Parcours</a></li>
         <li><a href="#projets">Projets</a></li>
-        <li><a href="#competences">Compétences</a></li>
         <li><a href="#publications">Sur LinkedIn</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -161,15 +160,125 @@
     </section>
 
     <!-- ===================================================== Projets -->
+    <!-- Chaque projet porte ses compétences (bloc .skills, boutons data-skill).
+         Le filtre en tête de section est construit automatiquement à partir d’elles :
+         pour ajouter une compétence, il suffit de l’ajouter à un projet. -->
     <section class="section wrap" id="projets" aria-labelledby="projets-titre">
       <div class="section-head">
         <h2 id="projets-titre">Projets</h2>
-        <p class="section-note">Deux projets à la une, puis le reste.</p>
+        <p class="section-note">À la une, trois études de cas avec démo en ligne et une contribution open source. Ensuite, le reste.</p>
       </div>
 
       <div class="section-body">
-        <article class="project project-featured">
-          <p class="project-meta">Open source · 2026 · plus de 100 étoiles sur GitHub</p>
+        <div class="skill-filter js-only" id="filtre-competences">
+          <p class="skill-filter-label" id="filtre-titre">Filtrer par compétence</p>
+          <ul class="skill-filter-list" aria-labelledby="filtre-titre"></ul>
+          <p class="skill-filter-status" aria-live="polite"></p>
+        </div>
+
+        <article class="project project-featured" data-project>
+          <p class="project-meta">Étude de cas&nbsp;· crédit à la consommation&nbsp;· 2026</p>
+          <h3 class="project-title"><a href="https://credit-process-intelligence.vercel.app/">Credit Process Intelligence</a></h3>
+          <p class="project-tagline">Savoir où l’IA rapporte vraiment, combien, et à quelles conditions.</p>
+          <figure class="shot">
+            <a href="https://credit-process-intelligence.vercel.app/" tabindex="-1">
+              <picture>
+                <source srcset="assets/img/projets/credit-process-intelligence-sombre.webp" media="(prefers-color-scheme: dark)">
+                <img src="assets/img/projets/credit-process-intelligence.webp" width="1440" height="900" loading="lazy" decoding="async" alt="Ouverture du rapport interactif : « Un dossier approuvé passe 99,6 % de son délai à attendre », trois chiffres clés et le plan de réseau où circulent les demandes réelles.">
+              </picture>
+            </a>
+            <figcaption>Le rapport interactif&nbsp;: les 13&nbsp;087 demandes réelles rejouées sur un plan de réseau.</figcaption>
+          </figure>
+          <p>Le process mining appliqué au journal réel d’une banque néerlandaise&nbsp;: 13&nbsp;087 demandes de crédit à la consommation, reconstituées étape par étape. Un dossier approuvé passe 99,6&nbsp;% de son délai à attendre, et 51&nbsp;% des dossiers validés repartent chercher des pièces.</p>
+          <p>Trois opportunités d’IA, rejouées sur les dossiers réels, chiffrées par simulation de Monte Carlo et qualifiées au regard de l’AI Act et du RGPD. Une seule est rentable&nbsp;: le contrôle de complétude au dépôt (VAN médiane de +48&nbsp;k€ sur trois ans). Le modèle de prédiction des abandons n’atteint pas ses seuils&nbsp;: il n’est donc pas déployé.</p>
+          <p>Avec les livrables d’un Business Analyst&nbsp;: note de cadrage, BPMN AS-IS et TO-BE, user stories, plan de recette, conduite du changement.</p>
+          <div class="skills">
+            <span class="k">Compétences</span>
+            <ul>
+              <li><button type="button" class="skill" data-skill="analyse-metier">Analyse métier</button></li>
+              <li><button type="button" class="skill" data-skill="process-mining">Process mining</button></li>
+              <li><button type="button" class="skill" data-skill="machine-learning">Machine learning</button></li>
+              <li><button type="button" class="skill" data-skill="business-case">Business case</button></li>
+              <li><button type="button" class="skill" data-skill="ai-act-rgpd">AI Act et RGPD</button></li>
+              <li><button type="button" class="skill" data-skill="qualite-donnees">Qualité des données</button></li>
+              <li><button type="button" class="skill" data-skill="data-visualisation">Data visualisation</button></li>
+            </ul>
+          </div>
+          <p class="tools"><span class="k">Stack</span>Python · pm4py · scikit-learn · LightGBM · React · ECharts</p>
+          <p class="project-links">
+            <a class="ext" href="https://credit-process-intelligence.vercel.app/">Voir la démo</a>
+            <a class="ext" href="https://github.com/youssefmir/credit-process-intelligence">Code sur GitHub</a>
+          </p>
+        </article>
+
+        <article class="project project-featured" data-project>
+          <p class="project-meta">Étude de cas&nbsp;· commande publique&nbsp;· 2026</p>
+          <h3 class="project-title"><a href="https://radar-marches-publics.vercel.app/">Radar Marchés Publics</a></h3>
+          <p class="project-tagline">Répondre moins souvent au hasard, et plus souvent là où l’on peut gagner.</p>
+          <figure class="shot">
+            <a href="https://radar-marches-publics.vercel.app/" tabindex="-1">
+              <picture>
+                <source srcset="assets/img/projets/radar-marches-publics-sombre.webp" media="(prefers-color-scheme: dark)">
+                <img src="assets/img/projets/radar-marches-publics.webp" width="1440" height="900" loading="lazy" decoding="async" alt="Page d’ouverture de Radar Marchés Publics : « Depuis 2024, 26 % des marchés publics n’ont reçu qu’une seule offre », chiffres clés et carte des départements.">
+              </picture>
+            </a>
+            <figcaption>La page d’ouverture&nbsp;: la part de marchés à offre unique, département par département.</figcaption>
+          </figure>
+          <p>Un radar d’appels d’offres pour les PME. Un entrepôt de 1&nbsp;264&nbsp;104 marchés attribués (DECP), construit avec DuckDB et dbt, alimente un classement hybride et expliqué des 7&nbsp;808 avis ouverts du BOAMP&nbsp;: mots-clés, embeddings, codes CPV et historique de chaque acheteur.</p>
+          <p>Depuis 2024, 25,7&nbsp;% des marchés n’ont reçu qu’une seule offre, et les PME gagnent 59&nbsp;% des marchés mais 26&nbsp;% du montant. Sur des avis jamais vus, le classement hybride atteint un nDCG@10 de 0,427, devant les mots-clés ou les embeddings seuls.</p>
+          <p>Même démarche de Business Analyst&nbsp;: cadrage, personas, BPMN, user stories, business case, conformité et recette.</p>
+          <div class="skills">
+            <span class="k">Compétences</span>
+            <ul>
+              <li><button type="button" class="skill" data-skill="analyse-metier">Analyse métier</button></li>
+              <li><button type="button" class="skill" data-skill="data-engineering">Data engineering</button></li>
+              <li><button type="button" class="skill" data-skill="recherche-information">Recherche d’information</button></li>
+              <li><button type="button" class="skill" data-skill="qualite-donnees">Qualité des données</button></li>
+              <li><button type="button" class="skill" data-skill="business-case">Business case</button></li>
+              <li><button type="button" class="skill" data-skill="ai-act-rgpd">AI Act et RGPD</button></li>
+              <li><button type="button" class="skill" data-skill="data-visualisation">Data visualisation</button></li>
+            </ul>
+          </div>
+          <p class="tools"><span class="k">Stack</span>Python · DuckDB · dbt · BM25 · embeddings · React · ECharts</p>
+          <p class="project-links">
+            <a class="ext" href="https://radar-marches-publics.vercel.app/">Voir la démo</a>
+            <a class="ext" href="https://github.com/youssefmir/radar-marches-publics">Code sur GitHub</a>
+          </p>
+        </article>
+
+        <article class="project project-featured" data-project>
+          <p class="project-meta">Outil&nbsp;· gouvernance de l’IA&nbsp;· 2026</p>
+          <h3 class="project-title"><a href="https://ai-usecase-factory.vercel.app/">AI Use Case Factory</a></h3>
+          <p class="project-tagline">Cadrer, prioriser, chiffrer et sécuriser un portefeuille de cas d’usage IA.</p>
+          <figure class="shot">
+            <a href="https://ai-usecase-factory.vercel.app/" tabindex="-1">
+              <picture>
+                <source srcset="assets/img/projets/ai-usecase-factory-sombre.webp" media="(prefers-color-scheme: dark)">
+                <img src="assets/img/projets/ai-usecase-factory.webp" width="1440" height="900" loading="lazy" decoding="async" alt="Vitrine d’AI Use Case Factory : les cas d’usage passent par cinq postes, du cadrage à la roadmap, puis se placent dans une matrice valeur × faisabilité.">
+              </picture>
+            </a>
+            <figcaption>La vitrine&nbsp;: chaque cas passe par cinq postes, du cadrage à la roadmap.</figcaption>
+          </figure>
+          <p>Un atelier web pour les Business Analysts et les comités IA&nbsp;: fiche de cadrage commune, matrice valeur × faisabilité sur douze critères, qualification AI Act et RGPD guidée, business case avec simulation de Monte Carlo, roadmap en trois vagues et note de cadrage exportable.</p>
+          <p>Sur trois organisations fictives, 16 cas qualifiés, dont 4 à haut risque au sens de l’AI Act et 4 dont la VAN à trois ans est négative. 195 tests automatisés.</p>
+          <div class="skills">
+            <span class="k">Compétences</span>
+            <ul>
+              <li><button type="button" class="skill" data-skill="analyse-metier">Analyse métier</button></li>
+              <li><button type="button" class="skill" data-skill="business-case">Business case</button></li>
+              <li><button type="button" class="skill" data-skill="ai-act-rgpd">AI Act et RGPD</button></li>
+              <li><button type="button" class="skill" data-skill="data-visualisation">Data visualisation</button></li>
+            </ul>
+          </div>
+          <p class="tools"><span class="k">Stack</span>React · TypeScript · ECharts · Vitest · Playwright</p>
+          <p class="project-links">
+            <a class="ext" href="https://ai-usecase-factory.vercel.app/">Voir la démo</a>
+            <a class="ext" href="https://github.com/youssefmir/ai-usecase-factory">Code sur GitHub</a>
+          </p>
+        </article>
+
+        <article class="project project-featured" data-project>
+          <p class="project-meta">Open source&nbsp;· 2026&nbsp;· plus de 100 étoiles sur GitHub</p>
           <h3 class="project-title"><a href="https://github.com/nassim-arifette/jevgrep">JevGrep</a></h3>
           <p class="project-tagline">Trouver du code par ce qu’il fait, sans connaître son nom.</p>
           <p>On pose une question, par exemple «&nbsp;Où est gérée l’expiration des sessions&#8239;?&nbsp;», et JevGrep renvoie les extraits de code source pertinents, avec leurs chemins et numéros de ligne. L’outil s’utilise en ligne de commande, ou via un serveur MCP pour qu’un agent de code explore lui-même le dépôt.</p>
@@ -179,6 +288,13 @@
 
 <span class="c"># chercher du code par son comportement</span>
 <span class="p">$ </span>jevgrep search --query "Where is session expiry handled?"</code></pre>
+          <div class="skills">
+            <span class="k">Compétences</span>
+            <ul>
+              <li><button type="button" class="skill" data-skill="ia-generative">IA générative</button></li>
+              <li><button type="button" class="skill" data-skill="recherche-information">Recherche d’information</button></li>
+            </ul>
+          </div>
           <p class="tools"><span class="k">Stack</span>TypeScript · CLI · MCP · OpenRouter</p>
           <p class="project-links">
             <a class="ext" href="https://github.com/nassim-arifette/jevgrep">Dépôt GitHub</a>
@@ -186,142 +302,85 @@
           </p>
         </article>
 
-        <article class="project project-featured">
-          <p class="project-meta">Data et IA · 2026 · en cours</p>
-          <h3 class="project-title"><a href="https://github.com/youssefmir/credit-process-intelligence">Credit Process Intelligence</a></h3>
-          <p class="project-tagline">Une mission de conseil data et IA, menée sur un vrai processus de crédit.</p>
-          <p>Le terrain&nbsp;: le journal d’événements réel d’un établissement financier néerlandais (BPI&nbsp;Challenge&nbsp;2012), soit 13&nbsp;087 demandes de crédit à la consommation et 262&nbsp;200 événements. L’objectif&nbsp;: comprendre où le processus perd du temps et des clients, puis chiffrer ce que l’IA peut y changer.</p>
-          <p>Déjà en place&nbsp;: une acquisition des données traçable, des contrôles qualité documentés, la découverte du processus (carte, variantes, conformité), les KPI de délais et de goulots, le coût des allers-retours et l’analyse des abandons.</p>
-          <div class="pipeline">
-            <p class="pipeline-caption">Avancement&nbsp;: 6 étapes sur 8</p>
-            <ol>
-              <li class="is-done">données</li>
-              <li class="is-done">qualité</li>
-              <li class="is-done">processus</li>
-              <li class="is-done">KPI</li>
-              <li class="is-done">allers-retours</li>
-              <li class="is-done">abandons</li>
-              <li>prédiction<span class="visually-hidden"> (à venir)</span></li>
-              <li>business case<span class="visually-hidden"> (à venir)</span></li>
-            </ol>
-          </div>
-          <p class="tools"><span class="k">Stack</span>Python · pandas · pm4py · Parquet</p>
-          <p class="project-links">
-            <a class="ext" href="https://github.com/youssefmir/credit-process-intelligence">Dépôt GitHub</a>
-          </p>
-        </article>
-
-        <ul class="projects">
-          <li class="project">
-            <p class="project-meta">Produit IA · 2026 · en construction</p>
-            <h3 class="project-title">AI Use Case Factory</h3>
-            <p>Une application pour cadrer, prioriser, chiffrer et sécuriser un portefeuille de cas d’usage IA&nbsp;: scoring, conformité à l’AI Act et au RGPD, business case, feuille de route. Le projet démarre&nbsp;: l’ossature technique est posée.</p>
-            <p class="tools"><span class="k">Stack</span>React · TypeScript · Vite</p>
-            <p class="project-links">
-              <a class="ext" href="https://github.com/youssefmir/ai-usecase-factory">Dépôt GitHub</a>
-            </p>
-          </li>
-          <li class="project">
-            <p class="project-meta">Recherche · mémoire de master</p>
-            <h3 class="project-title">Machine learning et détection d’anomalies dans les flux de données</h3>
-            <p>Mon mémoire de fin d’études porte sur ce que le machine learning apporte à la détection d’anomalies dans les flux de données. Un sujet proche de mon alternance, où j’ai conçu un tableau de bord de monitoring de ces flux dans Dataiku.</p>
-          </li>
-          <li class="project">
-            <p class="project-meta">Hackathon · octobre 2025 · AI&nbsp;Tinkerers</p>
-            <h3 class="project-title">AgentsIRL</h3>
-            <p>Neuf heures pour construire, à cinq, un agent multimodal capable d’interpréter des flux audio et vidéo, sur Google Cloud&nbsp;Run avec Mistral&nbsp;AI. Sans avoir jamais utilisé Cloud&nbsp;Run, j’ai pu contribuer grâce à mon bagage data et machine learning.</p>
-            <p class="project-links">
-              <a class="ext" href="https://www.linkedin.com/feed/update/urn:li:activity:7383773280404447232/">Récit sur LinkedIn</a>
-            </p>
-          </li>
-        </ul>
-
-        <div class="archive">
-          <h3 class="archive-title">Avant le master&nbsp;: projets de licence, 2022–2023</h3>
-          <ul class="archive-list">
-            <li>
-              <a class="ext" href="https://github.com/youssefmir/Analysis-of-pollination-in-the-Pyrenees-main">Bourdons des Pyrénées, 1889–2005</a>
-              <p>En 115 ans, la vallée de Gavarnie s’est réchauffée de 2,3&nbsp;°C et les bourdons butinent 118&nbsp;m plus haut, près de quatre fois moins que la montée des isothermes. Notebook commenté et package Python testé.</p>
+        <div class="project-group" data-group>
+          <h3 class="group-title">Autres projets</h3>
+          <ul class="projects">
+            <li class="project" data-project>
+              <p class="project-meta">Recherche&nbsp;· mémoire de master</p>
+              <h4 class="project-title">Machine learning et détection d’anomalies dans les flux de données</h4>
+              <p>Mon mémoire de fin d’études porte sur ce que le machine learning apporte à la détection d’anomalies dans les flux de données. Un sujet proche de mon alternance, où j’ai conçu un tableau de bord de monitoring de ces flux dans Dataiku.</p>
+              <div class="skills">
+                <span class="k">Compétences</span>
+                <ul>
+                  <li><button type="button" class="skill" data-skill="machine-learning">Machine learning</button></li>
+                  <li><button type="button" class="skill" data-skill="qualite-donnees">Qualité des données</button></li>
+                </ul>
+              </div>
             </li>
-            <li>
-              <a class="ext" href="https://github.com/youssefmir/Prediction-of-the-price-of-airline-tickets-for-an-Indian-company-">Prix des billets d’avion</a>
-              <p>Régression linéaire, arbre de décision, puis forêt aléatoire optimisée&nbsp;: R² de 0,85 en validation croisée. Python, scikit-learn.</p>
-            </li>
-            <li>
-              <a class="ext" href="https://github.com/youssefmir/Precipitations-dans-le-Kerala">Précipitations au Kerala, 1901–2017</a>
-              <p>Baisse des pluies confirmée par bootstrap et test de Mann-Kendall, poids de la mousson, carte des inondations de 2018. Projet à trois.</p>
+            <li class="project" data-project>
+              <p class="project-meta">Hackathon&nbsp;· octobre 2025&nbsp;· AI&nbsp;Tinkerers</p>
+              <h4 class="project-title">AgentsIRL</h4>
+              <p>Neuf heures pour construire, à cinq, un agent multimodal capable d’interpréter des flux audio et vidéo, sur Google Cloud&nbsp;Run avec Mistral&nbsp;AI. Sans avoir jamais utilisé Cloud&nbsp;Run, j’ai pu contribuer grâce à mon bagage data et machine learning.</p>
+              <div class="skills">
+                <span class="k">Compétences</span>
+                <ul>
+                  <li><button type="button" class="skill" data-skill="ia-generative">IA générative</button></li>
+                </ul>
+              </div>
+              <p class="project-links">
+                <a class="ext" href="https://www.linkedin.com/feed/update/urn:li:activity:7383773280404447232/">Récit sur LinkedIn</a>
+              </p>
             </li>
           </ul>
         </div>
-      </div>
-    </section>
 
-    <!-- ===================================================== Compétences -->
-    <section class="section wrap" id="competences" aria-labelledby="competences-titre">
-      <div class="section-head">
-        <h2 id="competences-titre">Compétences</h2>
-        <p class="section-note">Présentées sous forme de dictionnaire de données. Déformation professionnelle.</p>
-      </div>
-
-      <div class="section-body">
-        <!-- Les attributs role sont volontaires : sur mobile le tableau passe en display: block,
-             ce qui ferait perdre sa structure aux lecteurs d’écran de certains navigateurs. -->
-        <table class="dict" role="table">
-          <thead role="rowgroup">
-            <tr role="row">
-              <th scope="col" role="columnheader">Champ</th>
-              <th scope="col" role="columnheader">Définition</th>
-              <th scope="col" role="columnheader">Outils</th>
-            </tr>
-          </thead>
-          <tbody role="rowgroup">
-            <tr role="row">
-              <th scope="row" role="rowheader"><code>analyse_metier</code></th>
-              <td role="cell">Recueil des besoins, exigences fonctionnelles, spécifications et recette avec les utilisateurs.</td>
-              <td role="cell">Confluence, Excel</td>
-            </tr>
-            <tr role="row">
-              <th scope="row" role="rowheader"><code>modelisation</code></th>
-              <td role="cell">Modèles UML et dictionnaires de données&nbsp;: champs techniques, définitions métier, règles de validation.</td>
-              <td role="cell">UML, Excel, PostgreSQL</td>
-            </tr>
-            <tr role="row">
-              <th scope="row" role="rowheader"><code>data</code></th>
-              <td role="cell">Requêtes, préparation et contrôle des données pour les usages décisionnels.</td>
-              <td role="cell">SQL, PostgreSQL, Python, Dataiku&nbsp;DSS</td>
-            </tr>
-            <tr role="row">
-              <th scope="row" role="rowheader"><code>process_mining</code></th>
-              <td role="cell">Reconstituer un processus à partir de ses journaux d’événements&nbsp;: variantes, conformité, goulots, délais.</td>
-              <td role="cell">pm4py, pandas</td>
-            </tr>
-            <tr role="row">
-              <th scope="row" role="rowheader"><code>reporting</code></th>
-              <td role="cell">Définition des indicateurs, tableaux de bord décisionnels, monitoring des flux.</td>
-              <td role="cell">Power&nbsp;BI, Dataiku</td>
-            </tr>
-            <tr role="row">
-              <th scope="row" role="rowheader"><code>ia</code></th>
-              <td role="cell">Solutions métier intégrant des LLM, de la preuve de concept au MVP.</td>
-              <td role="cell">Python, LLM, Dataiku</td>
-            </tr>
-            <tr role="row">
-              <th scope="row" role="rowheader"><code>machine_learning</code></th>
-              <td role="cell">Régression, arbres de décision, forêts aléatoires, détection d’anomalies.</td>
-              <td role="cell">Python, pandas, scikit-learn</td>
-            </tr>
-            <tr role="row">
-              <th scope="row" role="rowheader"><code>run</code></th>
-              <td role="cell">Diagnostic d’incidents, reproduction en environnement de test, suivi des corrections et des habilitations.</td>
-              <td role="cell">ServiceNow, SAP&nbsp;Ariba, Ivalua</td>
-            </tr>
-            <tr role="row">
-              <th scope="row" role="rowheader"><code>langues</code></th>
-              <td role="cell">Échanges professionnels dans un contexte international.</td>
-              <td role="cell">français, anglais</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="archive" data-group>
+          <h3 class="group-title">Avant le master&nbsp;: projets de licence, 2022–2023</h3>
+          <ul class="archive-list">
+            <li data-project>
+              <a class="ext" href="https://pollination-pyrenees.vercel.app/">Bourdons des Pyrénées, 1889–2005</a>
+              <div>
+                <p>En 115 ans, la vallée de Gavarnie s’est réchauffée de 2,3&nbsp;°C et les bourdons butinent 118&nbsp;m plus haut, près de quatre fois moins que la montée des isothermes. Récit interactif et analyses Python.</p>
+                <div class="skills">
+                  <span class="k">Compétences</span>
+                  <ul>
+                    <li><button type="button" class="skill" data-skill="statistiques">Statistiques</button></li>
+                    <li><button type="button" class="skill" data-skill="data-visualisation">Data visualisation</button></li>
+                  </ul>
+                </div>
+                <p class="archive-code"><a class="ext" href="https://github.com/youssefmir/Analysis-of-pollination-in-the-Pyrenees-main">Code sur GitHub</a></p>
+              </div>
+            </li>
+            <li data-project>
+              <a class="ext" href="https://prediction-billets-avion.vercel.app/">Prix des billets d’avion</a>
+              <div>
+                <p>Un modèle de gradient boosting prédit le prix d’un vol intérieur indien à 615 roupies près en moyenne (6,9&nbsp;% du prix, R² de 0,94). Ses 400 arbres tournent dans le navigateur, au cœur d’un simulateur.</p>
+                <div class="skills">
+                  <span class="k">Compétences</span>
+                  <ul>
+                    <li><button type="button" class="skill" data-skill="machine-learning">Machine learning</button></li>
+                    <li><button type="button" class="skill" data-skill="data-visualisation">Data visualisation</button></li>
+                  </ul>
+                </div>
+                <p class="archive-code"><a class="ext" href="https://github.com/youssefmir/Prediction-of-the-price-of-airline-tickets-for-an-Indian-company-">Code sur GitHub</a></p>
+              </div>
+            </li>
+            <li data-project>
+              <a class="ext" href="https://precipitations-kerala.vercel.app/">Précipitations au Kerala, 1901–2017</a>
+              <div>
+                <p>Depuis 1901, la pluie annuelle baisse de 29&nbsp;mm par décennie (pente de Sen, test de Mann-Kendall). En août 2018, l’État reçoit pourtant près du double de la normale. Projet à trois.</p>
+                <div class="skills">
+                  <span class="k">Compétences</span>
+                  <ul>
+                    <li><button type="button" class="skill" data-skill="statistiques">Statistiques</button></li>
+                    <li><button type="button" class="skill" data-skill="data-visualisation">Data visualisation</button></li>
+                  </ul>
+                </div>
+                <p class="archive-code"><a class="ext" href="https://github.com/youssefmir/Precipitations-dans-le-Kerala">Code sur GitHub</a></p>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
     </section>
 
@@ -404,6 +463,78 @@
             .catch(function () {})
             .then(function () { window.print(); });
         });
+      });
+    })();
+
+    // Filtre des projets par compétence, construit à partir des compétences de chaque projet.
+    (function () {
+      var section = document.getElementById("projets");
+      var bar = document.getElementById("filtre-competences");
+      if (!section || !bar) return;
+      var list = bar.querySelector(".skill-filter-list");
+      var status = bar.querySelector(".skill-filter-status");
+      var projects = [].slice.call(section.querySelectorAll("[data-project]"));
+      var groups = [].slice.call(section.querySelectorAll("[data-group]"));
+      var skills = [];
+      var bySlug = {};
+      var current = "";
+
+      projects.forEach(function (project) {
+        [].forEach.call(project.querySelectorAll(".skill"), function (button) {
+          var slug = button.getAttribute("data-skill");
+          if (!bySlug[slug]) {
+            bySlug[slug] = { slug: slug, label: button.textContent.trim(), count: 0 };
+            skills.push(bySlug[slug]);
+          }
+          bySlug[slug].count += 1;
+        });
+      });
+
+      function addFilter(slug, label, count) {
+        var item = document.createElement("li");
+        var button = document.createElement("button");
+        var number = document.createElement("span");
+        button.type = "button";
+        button.className = "skill";
+        button.setAttribute("data-skill", slug);
+        button.setAttribute("aria-pressed", slug === "" ? "true" : "false");
+        button.textContent = label;
+        number.className = "n";
+        number.textContent = count;
+        button.appendChild(number);
+        item.appendChild(button);
+        list.appendChild(item);
+      }
+
+      addFilter("", "Toutes", projects.length);
+      skills.forEach(function (skill) { addFilter(skill.slug, skill.label, skill.count); });
+
+      function apply(slug, fromProject) {
+        current = slug === current ? "" : slug;
+        var shown = 0;
+        projects.forEach(function (project) {
+          var match = !current || !!project.querySelector('.skill[data-skill="' + current + '"]');
+          project.hidden = !match;
+          if (match) shown += 1;
+        });
+        groups.forEach(function (group) {
+          group.hidden = !group.querySelector("[data-project]:not([hidden])");
+        });
+        [].forEach.call(section.querySelectorAll(".skill"), function (button) {
+          var on = button.getAttribute("data-skill") === current;
+          if (button.closest(".skill-filter")) button.setAttribute("aria-pressed", String(on));
+          else button.classList.toggle("is-active", on && current !== "");
+        });
+        status.textContent = current
+          ? shown + (shown > 1 ? " projets" : " projet") + " · " + bySlug[current].label
+          : "";
+        if (fromProject) bar.scrollIntoView({ block: "start" });
+      }
+
+      section.addEventListener("click", function (event) {
+        var button = event.target.closest(".skill");
+        if (!button) return;
+        apply(button.getAttribute("data-skill"), !button.closest(".skill-filter"));
       });
     })();
   </script>

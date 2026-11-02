@@ -25,11 +25,12 @@ Puis ouvrir http://localhost:8000.
 
 ## Modifier le contenu
 
-Tout se passe dans `index.html`. Chaque section est repérée par un commentaire (`Couverture`, `Parcours`, `Projets`, `Compétences`, `Publications`, `Contact`) :
+Tout se passe dans `index.html`. Chaque section est repérée par un commentaire (`Couverture`, `Parcours`, `Projets`, `Publications`, `Contact`) :
 
 - **ajouter un poste** : copier un bloc `<li class="entry">…</li>` dans la section Parcours ;
-- **ajouter un projet** : copier un bloc `<li class="project">…</li>` dans la section Projets ;
-- **ajouter une compétence** : copier une ligne `<tr role="row">…</tr>` du tableau ;
+- **ajouter un projet** : copier un bloc `<article class="project project-featured" data-project>…</article>` (à la une) ou `<li class="project" data-project>…</li>` (autres projets) dans la section Projets. L’attribut `data-project` rend le projet filtrable ;
+- **relier un projet à une compétence** : ajouter une ligne `<li><button type="button" class="skill" data-skill="…">…</button></li>` dans le bloc « Compétences » du projet. Le filtre en tête de la section Projets se construit tout seul à partir de ces blocs : réutiliser le même `data-skill` pour regrouper des projets sous une même compétence ;
+- **capture d’un projet** : image WebP de 1440 × 900 dans `assets/img/projets/`, avec une variante `-sombre` pour le mode sombre ;
 - **ajouter un e-mail** : un modèle est en commentaire dans la section Contact ;
 - penser à mettre à jour la date « mis à jour en … » en bas de page.
 

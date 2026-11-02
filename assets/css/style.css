@@ -132,7 +132,8 @@ body {
 
 h1,
 h2,
-h3 {
+h3,
+h4 {
   margin: 0;
   font-weight: 450;
   line-height: 1.15;
@@ -169,6 +170,10 @@ pre {
 
 abbr[title] {
   text-decoration: none;
+}
+
+[hidden] {
+  display: none !important;
 }
 
 a {
@@ -450,8 +455,7 @@ html:not(.js) .js-only {
 .project-meta,
 .entry-date,
 .entry-org,
-.project-links,
-.archive-title {
+.project-links {
   font-family: var(--mono);
   font-size: 0.8125rem;
   line-height: 1.6;
@@ -626,65 +630,6 @@ html:not(.js) .js-only {
   }
 }
 
-/* Avancement d’un projet : carré plein = étape faite, carré vide = à venir */
-.pipeline {
-  max-width: var(--measure);
-  margin-top: 1.6rem;
-  padding: 1rem 1.25rem;
-  border: 1px solid var(--rule);
-  border-radius: 3px;
-  background: var(--paper-2);
-}
-
-.pipeline-caption {
-  margin-bottom: 0.7rem;
-  color: var(--ink-3);
-  font-family: var(--mono);
-  font-size: 0.75rem;
-  line-height: 1.4;
-}
-
-.pipeline ol {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.45rem 1.25rem;
-  font-family: var(--mono);
-  font-size: 0.8125rem;
-  line-height: 1.5;
-}
-
-.pipeline li {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5em;
-  color: var(--ink-3);
-}
-
-.pipeline li::before {
-  content: "";
-  flex: none;
-  width: 0.6em;
-  height: 0.6em;
-  border: 1px solid currentColor;
-}
-
-.pipeline li.is-done {
-  color: var(--ink);
-}
-
-.pipeline li.is-done::before {
-  background: currentColor;
-}
-
-.visually-hidden {
-  position: absolute !important;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
-}
-
 .project-links {
   display: flex;
   flex-wrap: wrap;
@@ -698,143 +643,194 @@ html:not(.js) .js-only {
   border-top: 1px solid var(--rule);
 }
 
+.project-group,
+.archive {
+  margin-top: 3rem;
+}
+
 .archive {
   margin-top: 4.5rem;
 }
 
-.archive-title {
+.group-title {
   margin-bottom: 1rem;
   color: var(--ink-3);
+  font-family: var(--mono);
+  font-size: 0.8125rem;
   font-weight: 400;
+  line-height: 1.6;
+}
+
+.project-group .projects {
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--ink);
 }
 
 .archive-list {
   border-top: 1px solid var(--ink);
 }
 
-.archive-list li {
+.archive-list > li {
   display: grid;
   grid-template-columns: minmax(0, 18rem) minmax(0, 1fr);
   gap: 0.3rem 2rem;
   align-items: baseline;
-  padding-block: 1rem;
+  padding-block: 1.1rem;
   border-bottom: 1px solid var(--rule);
 }
 
-.archive-list a {
+.archive-list > li > a {
   font-size: 1.0625rem;
   line-height: 1.35;
 }
 
-.archive-list p {
+.archive-list p:not(.archive-code) {
   color: var(--ink-2);
   font-size: 0.9375rem;
   line-height: 1.5;
 }
 
+.archive-list .skills {
+  margin-top: 0.6rem;
+}
+
+.archive-code {
+  margin-top: 0.3rem;
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  line-height: 1.6;
+}
+
 @media (max-width: 39.99em) {
-  .archive-list li {
+  .archive-list > li {
     grid-template-columns: minmax(0, 1fr);
   }
 }
 
-
-/* 9. Compétences ------------------------------------------------------------
-   Un tableau à la façon d’un dictionnaire de données : filets fins,
-   noms de champs en mono. */
-
-.dict {
-  width: 100%;
-  border-collapse: collapse;
-  border-block: 1px solid var(--ink);
+/* Captures des projets à la une */
+.shot {
+  max-width: 56rem;
+  margin: 1.75rem 0 0;
 }
 
-.dict thead th {
-  padding: 0.75rem 1.5rem 0.75rem 0;
-  border-bottom: 1px solid var(--rule);
+.shot a {
+  display: block;
+}
+
+.shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  background: var(--paper-2);
+  transition: border-color 0.15s ease;
+}
+
+.shot a:hover img {
+  border-color: var(--ink-3);
+}
+
+.shot figcaption {
+  margin-top: 0.6rem;
   color: var(--ink-3);
   font-family: var(--mono);
   font-size: 0.75rem;
-  font-weight: 400;
-  text-align: left;
+  line-height: 1.5;
 }
 
-.dict tbody th,
-.dict td {
-  padding: 1rem 1.5rem 1rem 0;
-  border-bottom: 1px solid var(--rule);
-  text-align: left;
-  vertical-align: baseline;
-}
 
-.dict tbody tr:last-child > * {
-  border-bottom: 0;
-}
+/* 9. Compétences des projets --------------------------------------------------
+   Chaque projet liste les compétences qu’il démontre. Le filtre en tête de la
+   section Projets est généré à partir de ces listes (script en bas de page). */
 
-.dict tbody th {
-  font-weight: 400;
-  white-space: nowrap;
-}
-
-.dict tbody th code {
-  font-size: 0.8125rem;
-}
-
-.dict td:nth-child(2) {
-  font-size: 1rem;
-  line-height: 1.45;
-}
-
-.dict td:last-child {
-  width: 13.5rem;
-  padding-right: 0;
+.skills {
+  margin-top: 1.25rem;
   color: var(--ink-2);
   font-family: var(--mono);
   font-size: 0.8125rem;
-  line-height: 1.75;
+  line-height: 1.6;
 }
 
-@media (max-width: 39.99em) {
-  .dict thead {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
-  }
+.skills .k {
+  margin-right: 0.75em;
+  color: var(--ink-3);
+}
 
-  .dict,
-  .dict tbody,
-  .dict tr,
-  .dict tbody th,
-  .dict td {
-    display: block;
-  }
+.skills ul,
+.skills li {
+  display: inline;
+}
 
-  .dict tr {
-    padding-block: 1rem;
-    border-bottom: 1px solid var(--rule);
-  }
+.skills li + li::before {
+  content: " · ";
+  color: var(--ink-3);
+}
 
-  .dict tbody tr:last-child {
-    border-bottom: 0;
-  }
+.skill {
+  appearance: none;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+  text-decoration-color: transparent;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
 
-  .dict tbody th,
-  .dict td {
-    padding: 0;
-    border: 0;
-  }
+.skill:hover,
+.skill.is-active,
+.skill[aria-pressed="true"] {
+  color: var(--accent);
+  text-decoration-color: currentColor;
+}
 
-  .dict td:nth-child(2) {
-    margin-top: 0.3rem;
-  }
+html:not(.js) .skill {
+  cursor: default;
+  pointer-events: none;
+}
 
-  .dict td:last-child {
-    width: auto;
-    margin-top: 0.3rem;
-  }
+.skill-filter {
+  margin-bottom: 3rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--rule);
+  scroll-margin-top: 1.5rem;
+}
+
+.skill-filter-label,
+.skill-filter-status {
+  color: var(--ink-3);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+
+.skill-filter-label {
+  margin-bottom: 0.75rem;
+}
+
+.skill-filter-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.4rem;
+  color: var(--ink-2);
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  line-height: 1.6;
+}
+
+.skill-filter .n {
+  margin-left: 0.45em;
+  color: var(--ink-3);
+}
+
+.skill-filter-status {
+  min-height: 1.5em;
+  margin-top: 0.75rem;
 }
 
 
@@ -989,23 +985,16 @@ html:not(.js) .js-only {
   .toc,
   .cover-links,
   .code,
-  .pipeline,
+  .shot,
+  .skill-filter,
+  .project .tools,
+  .project-tagline,
   .project-links,
   .archive,
   .contact-lead,
   #publications,
   .site-footer {
     display: none !important;
-  }
-
-  .dict thead th,
-  .dict tbody th,
-  .dict td {
-    padding-block: 1.3mm;
-  }
-
-  .dict td:last-child {
-    width: 44mm;
   }
 
   .points li + li {
@@ -1081,14 +1070,17 @@ html:not(.js) .js-only {
 
   .entry-head,
   .points li,
-  .project,
-  .dict tr,
+  .project p,
+  .skills,
   .contact-list li {
     break-inside: avoid;
   }
 
   .entry-head,
-  .section-head {
+  .section-head,
+  .project-meta,
+  .project-title,
+  .project-tagline {
     break-after: avoid;
   }
 
@@ -1104,8 +1096,8 @@ html:not(.js) .js-only {
   }
 
   .project-featured {
-    margin-bottom: 4mm;
-    padding-bottom: 4mm;
+    margin-bottom: 3mm;
+    padding-bottom: 3mm;
   }
 
   .projects > li + li {
@@ -1113,8 +1105,16 @@ html:not(.js) .js-only {
     padding-top: 4mm;
   }
 
-  .archive {
-    margin-top: 5mm;
+  .project-group {
+    margin-top: 4mm;
+  }
+
+  .project-group .projects {
+    padding-top: 3mm;
+  }
+
+  .skills {
+    margin-top: 1.5mm;
   }
 
   .points,
