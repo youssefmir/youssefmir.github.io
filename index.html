@@ -460,6 +460,23 @@ SQL uses a generic database symbol. -->
           </p>
         </article>
 
+        <article class="project project-featured" data-project id="gem-lab">
+          <p class="project-meta">AI evaluation · hackathon continuation · November 2026</p>
+          <h3 class="project-title"><a class="ext" href="https://gem-eval-lab.vercel.app/">Gem Lab — Testing AI reliability</a></h3>
+          <p class="project-tagline">A convincing answer is not always a reliable one. Test the evidence behind it.</p>
+          <figure class="shot"><a href="https://gem-eval-lab.vercel.app/" tabindex="-1"><img src="assets/img/projets/gem-lab.jpg" width="1512" height="949" loading="lazy" alt="Gem Lab evaluation workspace: six documentary scenarios, visible criteria and session statistics that exclude prepared examples."></a><figcaption>Six synthetic scenarios, two prompt strategies and inspectable checks. Prepared examples are labeled and excluded from model performance statistics.</figcaption></figure>
+          <p>A continuation of the Cloud Run GPU hackathon prototype built with Google ADK, Gemma and Ollama. I reworked it into a small evaluation lab for document-grounded assistants: citing sources, recognizing missing information, resisting prompt injection, choosing current documents, checking arithmetic and following a JSON contract.</p>
+          <p>Compare a simple prompt with a more explicit one, inspect each response and export the session as JSON or CSV. The checks are deterministic and limited to these six scenarios; they do not establish general model reliability.</p>
+          <p>The hosted demo supports prepared examples and pasted responses. Live Gemma calls are integrated, but provider access is currently unavailable. 16 automated tests cover grading, provenance, API validation and provider failure handling.</p>
+          <div class="skills"><span class="k">Skills</span><ul>
+            <li><button type="button" class="skill" data-skill="ia-generative">Generative AI</button></li>
+            <li><button type="button" class="skill" data-skill="recherche-information">Information retrieval</button></li>
+            <li><button type="button" class="skill" data-skill="qualite-donnees">Data quality</button></li>
+          </ul></div>
+          <p class="tools tech-list"><span class="k">Stack</span><span class="tech-badge">JavaScript</span><span class="tech-badge">Google ADK</span><span class="tech-badge">Gemma</span><span class="tech-badge">Ollama</span><span class="tech-badge">Vercel</span></p>
+          <p class="project-links"><a class="ext" href="https://gem-eval-lab.vercel.app/">Open the lab</a><a class="ext" href="https://gem-eval-lab.vercel.app/#method">Method and limitations</a></p>
+        </article>
+
         <div class="project-group" data-group>
           <h3 class="group-title">Other projects</h3>
           <ul class="projects">
