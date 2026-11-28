@@ -740,6 +740,139 @@ html:not(.js) .js-only {
 }
 
 
+/* Fiche de risque obligataire : les règles restent limitées à ce projet. */
+@media screen {
+  #bond-stress-lab {
+    --bond-accent: #00cfba;
+    --bond-surface: #fff;
+    --bond-ink: #000;
+    --bond-secondary: #454545;
+    --bond-line: #ccc;
+    --bond-inset: clamp(1.1rem, 3.3vw, 2.65rem);
+    margin-block-end: 3rem;
+    padding: 0;
+    scroll-margin-top: 1rem;
+    border: 1px solid var(--bond-line);
+    background: var(--bond-surface);
+    color: var(--bond-ink);
+    font-family: "Helvetica Neue", Arial, sans-serif;
+  }
+
+  #bond-stress-lab .bond-heading {
+    padding: var(--bond-inset);
+    border-top: 0.4rem solid var(--bond-accent);
+    background: #000;
+    color: #fff;
+  }
+
+  #bond-stress-lab .project-meta {
+    margin-bottom: 0.9rem;
+    color: #dedede;
+    font: 600 0.82rem/1.45 "Helvetica Neue", Arial, sans-serif;
+  }
+
+  #bond-stress-lab .project-title {
+    font-weight: 500;
+    font-size: clamp(2.6rem, 5.2vw, 4rem);
+    line-height: 0.99;
+    letter-spacing: -0.045em;
+  }
+
+  #bond-stress-lab .project-title a:hover { color: var(--bond-accent); }
+
+  #bond-stress-lab .project-tagline {
+    max-width: 48ch;
+    margin-top: 0.85rem;
+    color: #f2f2f2;
+    font-size: clamp(1.05rem, 1.7vw, 1.3rem);
+    font-style: normal;
+    line-height: 1.4;
+  }
+
+  #bond-stress-lab .project-links { margin-top: 1.45rem; gap: 0.6rem; }
+  #bond-stress-lab .project-links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0.55rem 1rem;
+    border: 1px solid #fff;
+    color: #fff;
+    font: 650 0.93rem/1.3 "Helvetica Neue", Arial, sans-serif;
+    text-decoration: none;
+  }
+
+  #bond-stress-lab .project-links a:first-child {
+    border-color: var(--bond-accent);
+    background: var(--bond-accent);
+    color: #000;
+  }
+  #bond-stress-lab .project-links a::after { content: none; }
+  #bond-stress-lab .project-links a:hover { background: #fff; color: #000; border-color: #fff; }
+  #bond-stress-lab .bond-heading a:focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
+
+  #bond-stress-lab .shot { max-width: none; margin: 0; }
+  #bond-stress-lab .shot img { border: 0; border-radius: 0; }
+  #bond-stress-lab .shot figcaption {
+    margin: 0;
+    padding: 0.8rem var(--bond-inset);
+    border-block: 1px solid var(--bond-line);
+    color: var(--bond-secondary);
+    font: 400 0.85rem/1.5 "Helvetica Neue", Arial, sans-serif;
+  }
+
+  #bond-stress-lab .bond-details {
+    display: grid;
+    gap: 1.05rem;
+    padding: var(--bond-inset);
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+
+  #bond-stress-lab .skills,
+  #bond-stress-lab .tools {
+    margin: 0;
+    color: var(--bond-secondary);
+    font: 400 0.87rem/1.5 "Helvetica Neue", Arial, sans-serif;
+  }
+  #bond-stress-lab .skills { border-top: 1px solid var(--bond-line); padding-top: 1rem; }
+  #bond-stress-lab .k { color: var(--bond-ink); font-weight: 700; }
+  #bond-stress-lab .skill:hover,
+  #bond-stress-lab .skill.is-active { color: var(--bond-ink); text-decoration-color: currentColor; }
+  #bond-stress-lab .tech-badge {
+    border: 0;
+    border-radius: 0;
+    min-height: auto;
+    padding: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+  }
+  #bond-stress-lab .tech-badge + .tech-badge { border-left: 1px solid var(--bond-line); padding-left: 0.55rem; }
+}
+
+@media screen and (min-width: 65em) {
+  #bond-stress-lab .bond-details {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 2rem;
+  }
+  #bond-stress-lab .skills,
+  #bond-stress-lab .tools { grid-column: 1 / -1; }
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  #bond-stress-lab {
+    --bond-surface: #171717;
+    --bond-ink: #fff;
+    --bond-secondary: #dedede;
+    --bond-line: #525252;
+  }
+}
+
+@media print {
+  #bond-stress-lab .bond-details > p { margin-top: 2mm; }
+}
+
+
 /* 9. Compétences des projets --------------------------------------------------
    Chaque projet liste les compétences qu’il démontre. Le filtre en tête de la
    section Projets est généré à partir de ces listes (script en bas de page). */
